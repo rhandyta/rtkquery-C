@@ -1,12 +1,28 @@
-import React from "react";
-import { useDestroyTodosMutation } from "../app/features/apiSlice";
+import React, { useState } from "react";
+import {
+    useDestroyTodosMutation,
+    useUpdateTodosMutation,
+} from "../app/features/apiSlice";
 
 function TodoItem({ todo }) {
     const [destroyTodos] = useDestroyTodosMutation();
+    const [updateTodos] = useUpdateTodosMutation();
+    const [isCompleted, setIsCompleted] = useState(todo.completed);
+
+    const completedHandler = (todo) => {
+        setIsCompleted(!isCompleted);
+        updateTodos({ ...todo, completed: !todo.completed });
+    };
+
     return (
         <li>
-            <div>
-                <input type="checkbox" className="checkbox" />
+            <div style={{ textDecoration: isCompleted && "line-through" }}>
+                <input
+                    type="checkbox"
+                    className="checkbox"
+                    checked={isCompleted}
+                    onChange={() => completedHandler(todo)}
+                />
                 {todo.title}
             </div>
             <button

@@ -24,6 +24,14 @@ const apiSlice = createApi({
             }),
             invalidatesTags: ["Todos"],
         }),
+        updateTodos: builder.mutation({
+            query: (body) => ({
+                url: `todos/${body.id}`,
+                method: "PUT",
+                body,
+            }),
+            invalidatesTags: ["Todos"],
+        }),
     }),
 });
 
@@ -31,6 +39,7 @@ export const {
     useGetTodosQuery,
     useAddTodosMutation,
     useDestroyTodosMutation,
+    useUpdateTodosMutation,
 } = apiSlice;
 
 export default apiSlice;
