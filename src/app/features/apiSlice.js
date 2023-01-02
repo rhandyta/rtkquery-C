@@ -6,10 +6,19 @@ const apiSlice = createApi({
     endpoints: (builder) => ({
         getTodos: builder.query({
             query: () => "todos",
+            providesTags: ["Todos"],
+        }),
+        addTodos: builder.mutation({
+            query: (body) => ({
+                url: "todos",
+                method: "POST",
+                body,
+            }),
+            invalidatesTags: ["Todos"],
         }),
     }),
 });
 
-export const { useGetTodosQuery } = apiSlice;
+export const { useGetTodosQuery, useAddTodosMutation } = apiSlice;
 
 export default apiSlice;

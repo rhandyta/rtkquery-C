@@ -1,11 +1,11 @@
 import React from "react";
 
-function TodoItem({ todo, isLoading, isSuccess, isError }) {
+function TodoItem({ todo }) {
     return (
         <li>
             <div>
-                <input type="checkbox" name="" id="" className="checkbox" />
-                Todos
+                <input type="checkbox" className="checkbox" />
+                {todo}
             </div>
             <button type="button" className="delete">
                 Delete

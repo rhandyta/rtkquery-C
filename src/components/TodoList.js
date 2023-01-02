@@ -11,7 +11,11 @@ function TodoList() {
             <ul>
                 {isLoading && <p>Loading...</p>}
                 {isSuccess &&
-                    data.map((todo) => <TodoItem todo={todo} key={todo.id} />)}
+                    data
+                        .map((todo) => (
+                            <TodoItem todo={todo.title} key={todo.id} />
+                        ))
+                        .reverse()}
                 {isError && <p>Error</p>}
             </ul>
         </div>
