@@ -12,9 +12,7 @@ function TodoList() {
                 {isLoading && <p>Loading...</p>}
                 {isSuccess &&
                     data
-                        .map((todo) => (
-                            <TodoItem todo={todo.title} key={todo.id} />
-                        ))
+                        .map((todo) => <TodoItem todo={todo} key={todo.id} />)
                         .reverse()}
                 {isError && <p>Error</p>}
             </ul>
